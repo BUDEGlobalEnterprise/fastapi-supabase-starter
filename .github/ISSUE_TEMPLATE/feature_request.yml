@@ -1,0 +1,27 @@
+name: Feature request
+description: Ask for something the starter should do
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check "Coming next" in the README first; if it's listed, a 👍 on an existing issue helps us decide what comes first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to build, and what gets in the way today?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you'd like
+      description: How you picture it working. Links to other starters that do it well help.
+  - type: dropdown
+    id: buyer
+    attributes:
+      label: Do you have a license?
+      options:
+        - "Yes"
+        - Not yet, considering it
