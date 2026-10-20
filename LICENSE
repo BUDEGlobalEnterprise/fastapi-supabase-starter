@@ -1,0 +1,97 @@
+FastAPI Supabase Starter: Commercial License
+
+Copyright (c) 2026 BUDE Global Enterprise. All rights reserved.
+
+"Software" means the source code, documentation and other files in this
+repository. "You" means the individual or organization named on the purchase.
+
+1. License grant. Once you have paid for a license, BUDE Global Enterprise grants you
+   a perpetual, worldwide, non-exclusive, non-transferable license to use, copy
+   and modify the Software to build an unlimited number of End Products, for
+   yourself or for your clients, commercial or not. The license covers the number
+   of developers included in the tier you bought (Solo and Pro: 1 developer;
+   Team: up to 5 developers). More developers need another license.
+
+2. End Products. An End Product is an application, website or service whose
+   main value comes from features you add, not from the Software itself. You
+   may distribute the Software, modified or not, as part of an End Product,
+   including handing its source code to the client you built it for.
+
+3. Restrictions. You may not:
+   a) sell, sublicense, share or redistribute the Software, or any substantial
+      part of it, as a template, starter kit, boilerplate or code library, paid
+      or free;
+   b) publish the Software in a public repository or package registry, except
+      as part of an End Product;
+   c) remove this license or the third-party notices below.
+
+4. Termination. This license ends automatically if you breach it. On
+   termination you must stop using the Software, except in End Products
+   already delivered.
+
+5. No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+   EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+   DEALINGS IN THE SOFTWARE.
+
+Purchase and license questions: https://starter.budeglobal.in/#pricing or budemadeofficial@gmail.com
+
+
+Third-party notices
+===================
+
+Portions of the Software are derived from the following MIT-licensed projects.
+Their notices are reproduced as their licenses require.
+
+-------------------------------------------------------------------------------
+full-stack-fastapi-template (https://github.com/fastapi/full-stack-fastapi-template)
+
+The MIT License (MIT)
+
+Copyright (c) 2019 Sebastián Ramírez
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+-------------------------------------------------------------------------------
+shadcn/ui (https://github.com/shadcn-ui/ui), components in frontend/src/components/ui
+
+MIT License
+
+Copyright (c) 2023 shadcn
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
