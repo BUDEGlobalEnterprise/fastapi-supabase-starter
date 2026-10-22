@@ -30,6 +30,7 @@ Every SaaS needs the same foundation before its first real feature:
 - **Teams:** organizations, invitations, member roles
 - **Permissions:** admins, editors, viewers, and rules that hold up
 - **Developer access:** API keys
+- **Your brand:** name, logo and colors, changed without a deploy
 - **Getting paid:** checkout, webhooks, receipts
 - **AI:** an assistant, and lately an MCP server so Claude can use your app
 - **Data isolation:** making sure user A can never see user B's rows
@@ -46,7 +47,7 @@ Rough estimates for an experienced developer building each piece properly, tests
 |---|---|---|
 | App shell: sidebar, Ctrl+K command menu, dashboard, data tables, landing page | 4–6 days | ✅ |
 | Supabase auth bridge (JWT/JWKS checks, session refresh, protected routes) | 1–2 days | ✅ |
-| Email codes, phone codes (SMS/WhatsApp), social login, CAPTCHA | 2–3 days | ✅ |
+| Email codes, phone codes (SMS/WhatsApp), social login, CAPTCHA, account security | 2–4 days | ✅ |
 | "Runs as the user" data layer so RLS protects every request | 2–3 days | ✅ |
 | Roles & permissions with admin UI, expiry and overrides | 3–5 days | ✅ |
 | Plans, usage limits and an audit log | 2–3 days | ✅ |
@@ -54,11 +55,14 @@ Rough estimates for an experienced developer building each piece properly, tests
 | In-app notifications (live), dark mode | 1–2 days | ✅ |
 | Organizations, invitations, ownership transfer | 3–5 days | ✅ |
 | API keys | 1–2 days | ✅ |
+| White-label branding: name, logo and colors from the admin UI | 1–2 days | ✅ |
+| Rate limiting, request logs, a database health check, a Postman collection | 1–2 days | ✅ |
 | Stripe + Razorpay with verified webhooks | 3–4 days | ✅ |
 | AI assistant + MCP server with OAuth | 3–5 days | ✅ |
 | AGENTS.md, Claude Code skills and MCP configs for coding agents | 1–2 days | ✅ |
+| Public site for search engines: pre-built pages, blog, help center, legal pages, sitemap | 2–4 days | ✅ |
 | API tests against a real Supabase + CI | 2–3 days | ✅ |
-| **Total** | **6–10 weeks** | **An afternoon of setup** |
+| **Total** | **7–12 weeks** | **An afternoon of setup** |
 
 At even ₹2,000 an hour, the low end is about **₹5 lakh of work**, for **₹1,999**.
 
@@ -66,15 +70,22 @@ At even ₹2,000 an hour, the low end is about **₹5 lakh of work**, for **₹1
 
 **🧭 A real app shell, not a demo page**
 - Sidebar with grouped navigation, filtered by each user's permissions; collapses to icons (Ctrl+B) and becomes a sheet on phones
-- Header with breadcrumbs, a **Ctrl+K command menu**, notifications, feedback, theme and account menu
+- Header with a **Ctrl+K command menu**, notifications, feedback, theme and account menu; breadcrumbs above each page title
 - A dashboard home: KPI tiles, usage meters, an AI usage chart, a getting-started checklist and recent activity
 - Data tables with search, sorting, column picker and paging; charts with a table view; confirm dialogs, toasts, skeletons and empty states everywhere
-- A public landing page with live pricing, and a split-screen sign-in page
+- A split-screen sign-in page
+
+**🌐 A public site built for search engines**
+- Home, features, pricing, compare, FAQ and contact pages, rendered to HTML at build time with TanStack Start; the signed-in app stays a fast single-page app
+- A **blog** and a searchable **help center** written in Markdown, plus privacy, terms, refund and delivery pages (the ones Razorpay asks for)
+- Per-page titles, descriptions, canonical links and link previews, structured data (product, FAQ, articles), `sitemap.xml` and `robots.txt`
+- Still plain static files: any static host or nginx serves it
 
 **🔐 Authentication (Supabase Auth)**
 - Email + password, email codes, and phone codes over **SMS or WhatsApp** (via MSG91)
 - Any OAuth provider (Google, GitHub, Apple, …), configured with one env var
 - Password reset, auto-refreshing sessions, Cloudflare Turnstile CAPTCHA
+- A Security page in settings: change email or password, and sign out every other device
 
 **🛡️ Security built into the database**
 - Postgres **Row Level Security** on every table
@@ -113,6 +124,7 @@ At even ₹2,000 an hour, the low end is about **₹5 lakh of work**, for **₹1
 **🧠 Ready for AI coding agents**
 - `AGENTS.md` with the security rules, commands, layout and recipes, read by Codex, Cursor, Copilot, Windsurf and Claude Code
 - `CLAUDE.md` plus Claude Code skills: `/add-resource` (migration with RLS, API, tests, client, page, nav) and `/add-ai-tool`
+- `ADD_PRODUCT.md`: one prompt for any agent to add a whole product area, with related tables, pages, a permission and AI tools
 - MCP servers preconfigured for Claude Code (`.mcp.json`), Cursor (`.cursor/mcp.json`) and Codex (`.codex/config.toml`): Supabase in read-only mode, shadcn/ui, Playwright and the app's own server
 - `.gemini/settings.json` points Gemini CLI at the same `AGENTS.md`
 - Each tool's docs: [Claude Code MCP](https://code.claude.com/docs/en/mcp) and [memory](https://code.claude.com/docs/en/memory), [Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli), [Cursor MCP](https://cursor.com/docs/context/mcp), [VS Code MCP servers](https://code.visualstudio.com/docs/copilot/customization/mcp-servers), [Gemini CLI context files](https://geminicli.com/docs/cli/gemini-md), [Supabase MCP](https://supabase.com/docs/guides/getting-started/mcp), [shadcn MCP](https://ui.shadcn.com/docs/mcp), and [which tools read AGENTS.md](https://thepromptshelf.dev/blog/agents-md-vs-claude-md-tool-support-2026)
@@ -133,18 +145,34 @@ At even ₹2,000 an hour, the low end is about **₹5 lakh of work**, for **₹1
   <img src="screenshots/admin-analytics.png" alt="Admin analytics: KPI tiles, sign-ups per day and users by plan" width="100%" />
 </p>
 
+**🎨 Your brand, without a deploy**
+- Admins set the app's **name, logo and color** under Settings › Appearance; the header, sidebar, sign-in page and browser tab follow
+- Eight curated palettes or any custom color, with **five chart colors derived from it** automatically
+- Dark mode handled: the color is lifted for dark backgrounds and button text picks white or dark for contrast
+- Changes preview for the admin first, then apply to everyone; each one lands in the audit log
+
+<p align="center">
+  <img src="screenshots/branding.png" alt="The Brand card in Settings: app name, logo, curated colors and the derived chart palette, previewed across the app" width="100%" />
+</p>
+
+**⚙️ Operations**
+- A per-IP **rate limit** that answers 429 with Retry-After (payment webhooks exempt), tunable or off with one env var
+- One log line per request with status, timing and the real client IP behind a proxy
+- `/health` checks the database through Supabase, ready for uptime monitors
+- A **Postman collection** generated from the API alongside the typed client
+
 **🔔 Notifications**
 - In-app notifications with an unread badge, delivered live through Supabase Realtime
 - Built-in triggers: payment received, new organization member, reply to feedback; `notify()` for your own events
 
 **🧰 Everything around it**
-- Dark mode (light / dark / system)
+- Dark mode (light / dark / system), designed rather than inverted
 - Profiles with avatar uploads (Supabase Storage)
 - An audit log written by database triggers: every change to roles, permissions, members, API keys, payments and plans, with who made it
 - SMS, WhatsApp (MSG91) and email (SMTP) templates managed under Admin › Messaging, with a delivery log of every message
 - Sentry, CORS config, Docker Compose, GitHub Actions
-- A typed TypeScript client generated from your OpenAPI schema, with React 19, TanStack Router and Query, and shadcn/ui
-- Pages: landing, sign-in, dashboard, items, organizations (members, invitations, settings), billing, assistant, API keys, settings (profile, appearance, your feedback), the admin console and OAuth consent
+- A typed TypeScript client generated from your OpenAPI schema, with React 19, TanStack Start, Router and Query, and shadcn/ui
+- Pages: home, features, pricing, compare, FAQ, contact, blog, help center, legal, sign-in, dashboard, items, organizations (members, invitations, settings), billing, assistant, API keys, settings (profile, security, appearance and brand, your feedback), the admin console and OAuth consent
 - `scripts/seed_demo.py`: demo accounts and 60 days of history, so the charts have something to show on day one
 
 Each integration switches on when its keys are set in `.env`. Payments, messaging and AI each live in their own migration and router, so they're easy to delete if you don't need them.
@@ -201,6 +229,8 @@ Each integration switches on when its keys are set in `.env`. Payments, messagin
 | Audit log | – | Trigger-based, covers every access change |
 | Admin tools | User list | User management, impersonation, metrics, feedback inbox |
 | Notifications | – | In-app, live via Supabase Realtime |
+| Branding | Edit the code | Name, logo and colors from the admin UI, charts included |
+| Operations | A health-check endpoint | Rate limiting, request log, database health check, Postman collection |
 | Dark mode | ✅ | ✅ |
 | AI / MCP | – | Gemini assistant with history + MCP server |
 | AI coding agents | – | AGENTS.md, Claude Code skills, MCP configs for Claude Code, Cursor and Codex |
@@ -316,6 +346,9 @@ No. You pay once and keep the code forever. Free updates last 3 months on Solo, 
 **Can I use it for client projects?**
 Yes. Build unlimited apps for yourself or your clients and hand them the source. You just can't resell or republish the starter itself as a template. See [LICENSE](LICENSE).
 
+**Can I put my own brand on it?**
+Yes, without touching code: admins set the app's name, logo and color under Settings › Appearance, and every page, chart and the sign-in screen follow. For deeper changes, the design tokens live in one CSS file.
+
 **Do I need a paid Supabase plan?**
 No. You can build and test on Supabase's free tier, and you can run Supabase locally with the CLI. Check Supabase's pricing for your production needs.
 
@@ -332,10 +365,10 @@ Yes. `AGENTS.md` gives every coding agent the security rules, commands and recip
 Gemini, through the official SDK. The tools are plain Python functions, so moving them to another model's tool-calling API is a small change.
 
 **How is it tested?**
-Unit tests for token checks and webhook signatures, plus API tests that run against a real Supabase with the project's migrations. They cover data isolation between users, roles and overrides, organizations, API keys, payment webhooks, the SMS hook and the MCP server. CI runs the same suite.
+Unit tests for token checks and webhook signatures, plus API tests that run against a real Supabase with the project's migrations. They cover data isolation between users, roles and overrides, organizations, API keys, payment webhooks, the SMS hook, the MCP server and branding. The rate limiter and request log have unit tests. CI runs the same suite.
 
 **What versions does it use?**
-Python 3.12, FastAPI, Supabase REST (postgrest-py), React 19, Vite, TanStack Router and Query, Tailwind v4, shadcn/ui, Node 24.
+Python 3.12, FastAPI, Supabase REST (postgrest-py), React 19, Vite, TanStack Start, Router and Query, Tailwind v4, shadcn/ui, Node 24.
 
 ## Quickstart
 
