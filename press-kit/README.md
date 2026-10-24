@@ -222,7 +222,7 @@ optional. Tick each one off as it goes live.
 
 | Done | Site | Submit at | Notes |
 |:---:|---|---|---|
-| ☐ | Product Hunt | https://www.producthunt.com/posts/new | Biggest single day; schedule it, see above |
+| ☑ | Product Hunt | https://www.producthunt.com/products/fastapi-supabase-starter | Live |
 | ☐ | Hacker News (Show HN) | https://news.ycombinator.com/submit | Technical text above |
 | ☐ | DevHunt | https://devhunt.org | Developer tools only; GitHub sign-in |
 | ☐ | Uneed | https://www.uneed.best/submit-a-tool | |

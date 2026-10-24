@@ -8,7 +8,7 @@ The Python-first SaaS starter: a fork of Tiangolo's Full-Stack FastAPI Template,
 
 **FastAPI · Supabase · Postgres RLS · React 19 · TanStack · shadcn/ui · Stripe · Razorpay · Gemini · MCP**
 
-**[Get it from ₹1,999 →](https://starter.budeglobal.in/#pricing)** · [See pricing](#pricing)
+**[Get it from ₹1,999 →](https://starter.budeglobal.in/#pricing)** · [See pricing](#pricing) · [On Product Hunt](https://www.producthunt.com/products/fastapi-supabase-starter)
 
 One-time payment · Full source code · Unlimited projects
 
